@@ -138,10 +138,11 @@ These categories match the menu layout in `install-master.sh`.
 - `install-flameshot.sh` — Flameshot screenshot tool.
 
 ### Terminal experience
-- `install-modern-cli.sh` — bundle of modern CLI tools: ripgrep, fd, bat, eza, fzf, zoxide, git-delta, jq, yq, tree, htop, ncdu. Adds aliases (`fd`, `bat`) and zoxide init to `~/.bashrc`.
+- `install-modern-cli.sh` — bundle of modern CLI tools: ripgrep, fd, bat, eza, fzf, zoxide, git-delta, jq, yq, tree, htop, ncdu. Adds aliases (`fd`, `bat`, eza as `ls`/`ll`/`la`/`lt`) and zoxide init to `~/.bashrc`.
 - `install-nerd-fonts.sh` — FiraCode, JetBrainsMono, Hack, Meslo, CascadiaCode (Nerd Fonts).
 - `install-starship.sh` — Starship prompt with the Gruvbox Rainbow preset; sets CaskaydiaCove Nerd Font Mono as the GNOME Terminal default font.
 - `install-btop.sh` — btop process/resource monitor.
+- `install-ghostty.sh` — Ghostty terminal emulator (Ubuntu archive package if available, else the classic snap). Seeds `~/.config/ghostty/config` with CaskaydiaCove Nerd Font Mono if no config exists.
 
 ### GPU monitoring
 - `install-nvtop.sh` — nvtop (NVIDIA + AMD).

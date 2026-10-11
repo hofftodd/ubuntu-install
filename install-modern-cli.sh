@@ -47,4 +47,17 @@ eval "$(zoxide init bash)"
 EOF
 fi
 
+# eza as the default ls (same aliases as the mac install). Separate guard so
+# machines that already have the block above still pick these up.
+if ! grep -q '# eza aliases' "$HOME/.bashrc"; then
+    cat >> "$HOME/.bashrc" <<'EOF'
+
+# eza aliases
+alias ls='eza --group-directories-first --icons=auto'
+alias ll='eza -l --group-directories-first --icons=auto --git'
+alias la='eza -la --group-directories-first --icons=auto --git'
+alias lt='eza --tree --level=2 --icons=auto'
+EOF
+fi
+
 echo "Modern CLI tools installed. Restart your shell or run: source ~/.bashrc"

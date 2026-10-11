@@ -69,6 +69,7 @@ ITEMS=(
     "Terminal experience|./install-nerd-fonts.sh"
     "Terminal experience|./install-starship.sh"
     "Terminal experience|./install-btop.sh"
+    "Terminal experience|./install-ghostty.sh"
 
     "GPU monitoring|./install-nvtop.sh"
     "GPU monitoring|./install-radeontop.sh"
