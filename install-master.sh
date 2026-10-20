@@ -26,6 +26,7 @@ ITEMS=(
     "Local LLMs|./install-ollama.sh"
     "Local LLMs|./install-lmstudio.sh"
     "Local LLMs|./install-llamacpp.sh"
+    "Local LLMs|./install-comfyui.sh"
 
     "Editors / dev apps|./install-vscode.sh"
     "Editors / dev apps|./install-cursor.sh"
@@ -55,6 +56,7 @@ ITEMS=(
     "Games|./install-steam.sh"
 
     "Networking|./install-tailscale.sh"
+    "Networking|./install-rdp-server.sh"
     "Networking|./install-nas-tools.sh"
 
     "Databases|./install-postgres.sh"
@@ -116,10 +118,15 @@ for entry in "${ITEMS[@]}"; do
     fi
 done
 
-# install-amd-drivers.sh defaults to off — Ubuntu 26 ships modern amdgpu
-# in-kernel; the script is only useful for ROCm builds.
+# A couple of scripts default to off:
+#   install-amd-drivers.sh — Ubuntu 26 ships modern amdgpu in-kernel, so it's
+#     only useful for ROCm builds.
+#   install-comfyui.sh — pulls several GB of PyTorch wheels; opt in when you
+#     actually want image generation on this box.
 for ((i = 0; i < ${#PATHS[@]}; i++)); do
-    [ "${PATHS[$i]}" = "./install-amd-drivers.sh" ] && ITEM_SEL[$i]=0
+    case "${PATHS[$i]}" in
+        ./install-amd-drivers.sh|./install-comfyui.sh) ITEM_SEL[$i]=0 ;;
+    esac
 done
 
 NUM_ITEMS=${#PATHS[@]}

@@ -64,6 +64,8 @@ GO_VERSION=1.24.0           ./install-go.sh
 NODE_VERSION=22             ./install-nodejs.sh
 JAVA_VERSION=21.0.5-tem     ./install-sdkman.sh
 BACKEND=cpu                 ./install-llamacpp.sh   # default is vulkan
+COMFY_BACKEND=cuda          ./install-comfyui.sh    # default auto-detects
+COMFY_MODELS=1              ./install-comfyui.sh    # also fetch ~23GB of models
 USECASE=graphics            ./install-amd-drivers.sh
 ```
 
@@ -94,6 +96,7 @@ These categories match the menu layout in `install-master.sh`.
 - `install-ollama.sh` — Ollama (CLI + systemd service).
 - `install-lmstudio.sh` — LM Studio AppImage + desktop launcher.
 - `install-llamacpp.sh` — llama.cpp built from source. Default backend is **Vulkan** (`BACKEND=vulkan`); also supports `cpu`, `cuda`, `hip`. The menu prompts for backend choice if llama.cpp is in the run list. Symlinks `llama-cli`/`llama-server`/etc. into `~/.local/bin`.
+- `install-comfyui.sh` — ComfyUI, the node-graph UI for Stable Diffusion / video models. Clones it to `~/src/ComfyUI` with its own venv, picks the PyTorch wheel channel to match your GPU (`rocm`/`cuda`/`cpu`, auto-detected), installs ComfyUI-Manager, and adds a `comfyui` launcher to `~/.local/bin`. Re-run to update in place. Default-deselected in the menu — the PyTorch wheels are several GB. **No model weights are installed by default** — pass `COMFY_MODELS=1` for a ~23GB starter set (Flux.1-schnell fp8 + SDXL base + SDXL VAE), or pull models from the Manager tab in the web UI. Overrides: `COMFY_DIR`, `COMFY_BACKEND`, `COMFY_TORCH_INDEX`, `COMFY_MANAGER`, `COMFY_MODELS`, `COMFY_SERVICE`, `COMFY_PORT`.
 
 ### Editors / dev apps
 - `install-vscode.sh` — Visual Studio Code.
@@ -127,6 +130,7 @@ These categories match the menu layout in `install-master.sh`.
 
 ### Networking
 - `install-tailscale.sh` — Tailscale mesh VPN.
+- `install-rdp-server.sh` — RDP server via GNOME Remote Desktop's system daemon ("Remote Login"): generates a self-signed TLS cert, enables the headless service, and opens the port in ufw if it's active. Log in with your normal Linux username/password. Overrides: `RDP_PORT` (3389), `RDP_CERT_DAYS` (3650).
 
 ### Databases
 - `install-postgres.sh` — PostgreSQL + `postgresql-contrib` + `pgcli`. Creates a Postgres role and DB matching your Linux user.
@@ -154,6 +158,8 @@ These categories match the menu layout in `install-master.sh`.
 
 - Scripts assume Ubuntu and use `apt-get`. They use `sudo` where needed.
 - Most scripts append shell-init blocks to `~/.bashrc` (pyenv, sdkman, nvm, go, uv). Open a new shell or `source ~/.bashrc` after running.
+- `install-comfyui.sh` downloads models only with `COMFY_MODELS=1`. Each file is checked against the sha256 HuggingFace publishes for it, and a failed check deletes the partial file so a re-run starts clean. The Flux weights come from Comfy-Org's ungated mirror — `black-forest-labs`' own repos now need an accepted license; set `HF_TOKEN` if you swap in a gated model such as flux1-dev.
+- `install-comfyui.sh` pins a PyTorch wheel channel per backend (ROCm 7.2 / CUDA 13.0). Those go stale too — check https://download.pytorch.org/whl/ and pass `COMFY_TORCH_INDEX` if the install can't find torch.
 - Pinned-version downloads (LM Studio, Go, AMD drivers) **will go stale** — check the upstream source and override the version env var when needed. `update-versions.sh` automates this for Go, nvm, Python, and Nerd Fonts; LM Studio and AMD drivers are still manual.
 - `install-amd-drivers.sh` installs ROCm by default (`USECASE=graphics,rocm`). If you only want graphics, use `USECASE=graphics`.
 - On a brand-new Ubuntu LTS release, `install-amd-drivers.sh` and `install-docker-desktop.sh` may fail until AMD/Docker publish packages for the new codename.
