@@ -9,11 +9,24 @@ if ! grep -q 'starship init bash' "$HOME/.bashrc"; then
     echo 'eval "$(starship init bash)"' >> "$HOME/.bashrc"
 fi
 
-# Apply the Gruvbox Rainbow preset
+# Apply the Gruvbox Rainbow preset, changed to show user@hostname (the preset
+# shows only the username). The hostname shows on every machine, not only
+# over SSH.
 mkdir -p "$HOME/.config"
-starship preset gruvbox-rainbow -o "$HOME/.config/starship.toml"
+{
+    starship preset gruvbox-rainbow \
+        | awk '{ print } $0 == "$username\\" { print "$hostname\\" }' \
+        | sed "s/^format = '\[\$user \](\$style)'\$/format = '[\$user](\$style)'/"
+    cat <<'EOF'
 
-echo "Starship installed with Gruvbox Rainbow preset. Restart your shell or run: source ~/.bashrc"
+[hostname]
+ssh_only = false
+style = "bg:color_orange fg:color_fg0"
+format = '[@$hostname ]($style)'
+EOF
+} > "$HOME/.config/starship.toml"
+
+echo "Starship installed with Gruvbox Rainbow preset (with user@hostname). Restart your shell or run: source ~/.bashrc"
 
 # Set the Cascadia Code Nerd Font as the default in GNOME Terminal so the
 # Starship prompt's powerline glyphs render correctly. Note: the Nerd Fonts
