@@ -131,6 +131,7 @@ These categories match the menu layout in `install-master.sh`.
 ### Networking
 - `install-tailscale.sh` — Tailscale mesh VPN.
 - `install-rdp-server.sh` — RDP server via GNOME Remote Desktop's system daemon ("Remote Login"): generates a self-signed TLS cert, enables the headless service, and opens the port in ufw if it's active. Log in with your normal Linux username/password. Overrides: `RDP_PORT` (3389), `RDP_CERT_DAYS` (3650).
+- `install-avahi.sh` — Avahi mDNS/DNS-SD (`avahi-daemon`, `avahi-utils`, `libnss-mdns`): advertises the machine as `<hostname>.local` and resolves other `.local` hosts. Opens 5353/udp in ufw if it's active.
 
 ### Databases
 - `install-postgres.sh` — PostgreSQL + `postgresql-contrib` + `pgcli`. Creates a Postgres role and DB matching your Linux user.

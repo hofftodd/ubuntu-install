@@ -58,6 +58,7 @@ ITEMS=(
     "Networking|./install-tailscale.sh"
     "Networking|./install-rdp-server.sh"
     "Networking|./install-nas-tools.sh"
+    "Networking|./install-avahi.sh"
 
     "Databases|./install-postgres.sh"
 
