@@ -83,6 +83,7 @@ These categories match the menu layout in `install-master.sh`.
 ### Git / GitHub
 - `install-git-config.sh` — global git config: `user.name`/`user.email` (prompts if not set; or pass `GIT_USER_NAME`/`GIT_USER_EMAIL`), modern defaults (rebase pulls, autoSetupRemote, zdiff3, rerere), aliases. Auto-wires `git-delta` as the pager if installed.
 - `install-gh.sh` — GitHub CLI (`gh`).
+- `install-lazygit.sh` — lazygit, terminal UI for git (latest release from GitHub, checksum-verified, into `~/.local/bin`).
 
 ### Languages
 - `install-sdkman.sh` — SDKMAN! plus Java (latest Eclipse Temurin), Groovy, and Gradle. Self-updates SDKMAN when re-run.
@@ -104,12 +105,14 @@ These categories match the menu layout in `install-master.sh`.
 - `install-intellij.sh` — JetBrains IntelliJ IDEA.
 - `install-micro.sh` — micro, modern terminal text editor.
 - `install-fresh.sh` — Fresh terminal text editor (latest `.deb` from sinelaw/fresh GitHub release).
+- `install-posting.sh` — Posting, API client for the terminal (requests, collections, environments). Installed with `uv tool`; run `install-uv.sh` first.
 - `install-claude-code.sh` — Claude Code CLI (Anthropic).
 - `install-opencode.sh` — opencode, open-source terminal coding agent.
 - `install-little-coder.sh` — little-coder, npm-based AI coding agent CLI.
 - `install-pi.sh` — pi (pi.dev), terminal coding agent (npm; depends on Node).
 - `install-oh-my-pi.sh` — Oh My Pi, AI coding agent for the terminal (hash-anchored edits, LSP, Python, browser, subagents); binary `omp` from [can1357/oh-my-pi](https://github.com/can1357/oh-my-pi).
 - `install-docker-desktop.sh` — Docker Desktop.
+- `install-lazydocker.sh` — lazydocker, terminal UI for Docker and Docker Compose (latest release from GitHub, checksum-verified, into `~/.local/bin`). Works with whichever Docker engine is running.
 
 ### Productivity
 - `install-obsidian.sh` — Obsidian (flatpak).
@@ -146,6 +149,7 @@ These categories match the menu layout in `install-master.sh`.
 - `install-nerd-fonts.sh` — FiraCode, JetBrainsMono, Hack, Meslo, CascadiaCode (Nerd Fonts).
 - `install-starship.sh` — Starship prompt with the Gruvbox Rainbow preset; sets CaskaydiaCove Nerd Font Mono as the GNOME Terminal default font.
 - `install-btop.sh` — btop process/resource monitor.
+- `install-frogmouth.sh` — Frogmouth, Markdown browser for the terminal (local files, URLs, GitHub READMEs). Installed with `uv tool`; run `install-uv.sh` first. It runs on its own Python 3.13 (`FROGMOUTH_PYTHON`), since frogmouth 0.9.x crashes on start under Python 3.14+.
 - `install-ghostty.sh` — Ghostty terminal emulator (Ubuntu archive package if available, else the classic snap). Seeds `~/.config/ghostty/config` with CaskaydiaCove Nerd Font Mono if no config exists.
 
 ### GPU monitoring

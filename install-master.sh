@@ -15,6 +15,7 @@ ITEMS=(
 
     "Git/GitHub|./install-git-config.sh"
     "Git/GitHub|./install-gh.sh"
+    "Git/GitHub|./install-lazygit.sh"
 
     "Languages|./install-sdkman.sh"
     "Languages|./install-python.sh"
@@ -33,6 +34,7 @@ ITEMS=(
     "Editors / dev apps|./install-intellij.sh"
     "Editors / dev apps|./install-micro.sh"
     "Editors / dev apps|./install-fresh.sh"
+    "Editors / dev apps|./install-posting.sh"
     "Editors / dev apps|./install-claude-code.sh"
     "Editors / dev apps|./install-claude-desktop.sh"
     "Editors / dev apps|./install-opencode.sh"
@@ -40,6 +42,7 @@ ITEMS=(
     "Editors / dev apps|./install-pi.sh"
     "Editors / dev apps|./install-oh-my-pi.sh"
     "Editors / dev apps|./install-docker-desktop.sh"
+    "Editors / dev apps|./install-lazydocker.sh"
 
     "Productivity|./install-obsidian.sh"
     "Productivity|./install-chrome.sh"
@@ -71,6 +74,7 @@ ITEMS=(
     "Terminal experience|./install-nerd-fonts.sh"
     "Terminal experience|./install-starship.sh"
     "Terminal experience|./install-btop.sh"
+    "Terminal experience|./install-frogmouth.sh"
     "Terminal experience|./install-ghostty.sh"
 
     "GPU monitoring|./install-nvtop.sh"
