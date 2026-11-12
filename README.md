@@ -107,6 +107,7 @@ These categories match the menu layout in `install-master.sh`.
 - `install-fresh.sh` — Fresh terminal text editor (latest `.deb` from sinelaw/fresh GitHub release).
 - `install-posting.sh` — Posting, API client for the terminal (requests, collections, environments). Installed with `uv tool`; run `install-uv.sh` first.
 - `install-claude-code.sh` — Claude Code CLI (Anthropic).
+- `install-claude-desktop.sh` — Claude desktop app. Anthropic doesn't ship one for Linux, so this uses the unofficial [aaddrick/claude-desktop-debian](https://github.com/aaddrick/claude-desktop-debian) repackaging, from its APT repo (updates with `apt upgrade`; amd64 and arm64).
 - `install-opencode.sh` — opencode, open-source terminal coding agent.
 - `install-little-coder.sh` — little-coder, npm-based AI coding agent CLI.
 - `install-pi.sh` — pi (pi.dev), terminal coding agent (npm; depends on Node).
@@ -134,12 +135,14 @@ These categories match the menu layout in `install-master.sh`.
 ### Networking
 - `install-tailscale.sh` — Tailscale mesh VPN.
 - `install-rdp-server.sh` — RDP server via GNOME Remote Desktop's system daemon ("Remote Login"): generates a self-signed TLS cert, enables the headless service, and opens the port in ufw if it's active. Log in with your normal Linux username/password. Overrides: `RDP_PORT` (3389), `RDP_CERT_DAYS` (3650).
+- `install-nas-tools.sh` — tools for NAS shares: `smbclient` (list and test SMB shares), `cifs-utils` (SMB/CIFS mounts) and `nfs-common` (`showmount` and NFS mounts). Prints the common commands.
 
 ### Databases
 - `install-postgres.sh` — PostgreSQL + `postgresql-contrib` + `pgcli`. Creates a Postgres role and DB matching your Linux user.
 
 ### Sync / utilities
 - `install-syncthing.sh` — Syncthing (per-user systemd service).
+- `install-unison.sh` — Unison, two-way file synchronizer (keeps two folders in sync across machines, e.g. over SSH).
 - `install-vlc.sh` — VLC media player.
 - `install-handbrake.sh` — HandBrake (GUI + CLI).
 - `install-flameshot.sh` — Flameshot screenshot tool.
